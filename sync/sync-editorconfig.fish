@@ -13,12 +13,12 @@ echo "Source .editorconfig: $source_editorconfig"
 echo "Scanning for repos in: $g0t4_repos"
 echo ""
 
-if not test -f $source_editorconfig
+if not path is $source_editorconfig
     echo "Error: source_editorconfig not found at $source_editorconfig"
     exit 1
 end
 
-if not test -d $g0t4_repos
+if not path is $g0t4_repos
     echo "Error: g0t4_repos directory not found at $g0t4_repos"
     exit 1
 end
