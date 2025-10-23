@@ -14,9 +14,9 @@ echo "Scanning for repos in: $g0t4_repos"
 echo ""
 
 function ensure_path_exists
-    set p $argv[1]
-    if not test -e $p
-        echo "Holy crap, $p is missing! Get your shit together."
+    set _path $argv[1]
+    if not test -e $_path
+        echo "Holy crap, $_path is missing! Get your shit together."
         exit 1
     end
 end
