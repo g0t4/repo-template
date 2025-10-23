@@ -21,15 +21,9 @@ function ensure_path_exists
     end
 end
 
-if not path is $source_editorconfig
-    echo "Error: source_editorconfig not found at $source_editorconfig"
-    exit 1
-end
+ensure_path_exists $source_editorconfig
+ensure_path_exists $g0t4_repos
 
-if not path is $g0t4_repos
-    echo "Error: g0t4_repos directory not found at $g0t4_repos"
-    exit 1
-end
 
 set synced_count 0
 set skipped_count 0
