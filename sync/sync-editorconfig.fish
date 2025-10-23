@@ -30,33 +30,32 @@ set skipped_count 0
 
 # Iterate through each directory in g0t4 repos
 for repo in $g0t4_repos/*
-    # Skip if not a directory
-    if not test -d $repo
+    if not path is $repo
         continue
     end
 
-    # Skip the template repo itself
     if test $repo = $template_repo
         continue
     end
 
-    # Check if it's a git repo
-    if not test -d "$repo/.git"
+    if not path is "$repo/.git"
         continue
     end
 
     set repo_name (basename $repo)
 
-    # Check if repo has .editorconfig
-    if test -f "$repo/.editorconfig"
-        echo "✓ Syncing .editorconfig to: $repo_name"
-        cp $source_editorconfig "$repo/.editorconfig"
+    # ? skip if it is a fork
+    # OR, should I allowlist what to replace? script could even ask and store the results in a file in sync dir (for new repos since last run)
+    # TODO THIS IS NOT READY... just an idea
+
+    if path is "$repo/.editorconfig"
+        echo "✓ $repo_name"
+        # echo cp $source_editorconfig "$repo/.editorconfig"
         set synced_count (math $synced_count + 1)
     else
-        echo "  Skipping $repo_name (no .editorconfig found)"
         set skipped_count (math $skipped_count + 1)
     end
 end
 
 echo ""
-echo "Summary: Synced $synced_count repos, skipped $skipped_count repos"
+echo "Synced $synced_count repos, skipped $skipped_count repos"
