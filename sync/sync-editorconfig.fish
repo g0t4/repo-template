@@ -6,9 +6,7 @@ set script_dir (dirname (path resolve (status --current-filename)))
 set template_repo (dirname $script_dir)
 set source_editorconfig "$template_repo/.editorconfig"
 
-# Navigate to parent directory where github/g0t4 repos are located
-set repos_root (dirname (dirname $template_repo))
-set g0t4_repos "$repos_root/github/g0t4"
+set g0t4_repos "$WES_REPOS/github/g0t4"
 
 echo "Template repo: $template_repo"
 echo "Source .editorconfig: $source_editorconfig"
