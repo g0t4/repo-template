@@ -2,8 +2,7 @@
 
 # Sync .editorconfig from this template repo to other g0t4 repos
 
-# Get the directory of this script and the template repo
-set script_dir (dirname (status --current-filename))
+set script_dir (dirname (path resolve (status --current-filename)))
 set template_repo (dirname $script_dir)
 set source_editorconfig "$template_repo/.editorconfig"
 
@@ -16,15 +15,13 @@ echo "Source .editorconfig: $source_editorconfig"
 echo "Scanning for repos in: $g0t4_repos"
 echo ""
 
-# Check if source .editorconfig exists
 if not test -f $source_editorconfig
-    echo "Error: Source .editorconfig not found at $source_editorconfig"
+    echo "Error: source_editorconfig not found at $source_editorconfig"
     exit 1
 end
 
-# Check if g0t4 repos directory exists
 if not test -d $g0t4_repos
-    echo "Error: g0t4 repos directory not found at $g0t4_repos"
+    echo "Error: g0t4_repos directory not found at $g0t4_repos"
     exit 1
 end
 
