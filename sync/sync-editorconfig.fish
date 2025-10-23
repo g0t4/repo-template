@@ -13,6 +13,14 @@ echo "Source .editorconfig: $source_editorconfig"
 echo "Scanning for repos in: $g0t4_repos"
 echo ""
 
+function ensure_path_exists
+    set p $argv[1]
+    if not test -e $p
+        echo "Holy crap, $p is missing! Get your shit together."
+        exit 1
+    end
+end
+
 if not path is $source_editorconfig
     echo "Error: source_editorconfig not found at $source_editorconfig"
     exit 1
